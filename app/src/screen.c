@@ -6,7 +6,6 @@
 
 #include "events.h"
 #include "icon.xpm"
-#include "scrcpy.h"
 #include "tiny_xpm.h"
 #include "video_buffer.h"
 #include "util/log.h"
@@ -314,6 +313,7 @@ screen_init(struct screen *screen, struct video_buffer *vb,
 
     // starts with "opengl"
     bool use_opengl = renderer_name && !strncmp(renderer_name, "opengl", 6);
+    bool mipmaps = scale_filter == SC_SCALE_FILTER_TRILINEAR;
     if (use_opengl) {
         struct sc_opengl *gl = &screen->gl;
         sc_opengl_init(gl);
